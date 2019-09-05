@@ -81,8 +81,8 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements/dev.txt
-     - run:
-          command: echo ${FLASK_CONFIG}
-          environment:
-            FLASK_CONFIG: staging
+    #  - run:
+    #       command: echo ${FLASK_CONFIG}
+    #       environment:
+    #         FLASK_CONFIG: staging
                         
