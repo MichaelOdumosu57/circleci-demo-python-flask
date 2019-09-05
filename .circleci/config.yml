@@ -114,10 +114,13 @@ jobs:
     #       environment:
     #         FLASK_CONFIG: staging
   deploy:
-    docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+    # docker:
+    #   - image: circleci/python:3.6.2-stretch-browsers
     steps:
       - checkout
+      - run:
+          name: installing git
+          command:  apt-get install git
       - run:
           name: Deploy Master to Heroku
           command: |
