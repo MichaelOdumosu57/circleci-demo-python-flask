@@ -60,6 +60,18 @@
 
 #python flash tutorial#
 
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
 version: 2
 jobs:
   build:
@@ -106,9 +118,8 @@ jobs:
           destination: tr1
       - store_test_results:
           path: test-reports/
-      - run:
-          name: installing heroku
-          command:  which heroku
+  deploy:
+    steps:
       - run:
           name: Deploy Master to Heroku
           command: |
