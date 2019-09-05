@@ -118,15 +118,13 @@ jobs:
           destination: tr1
       - store_test_results:
           path: test-reports/
-  deploy:
-    steps:
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master #you already have git here
-          environment:
-            HEROKU_API_KEY: a712e197-ad8a-46e2-8fb4-c2232bd8ecd0
-            HEROKU_APP_NAME: circleci-python-flask
+    #   - run:
+    #       name: Deploy Master to Heroku
+    #       command: |
+    #         git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master #you already have git here
+    #       environment:
+    #         HEROKU_API_KEY: a712e197-ad8a-46e2-8fb4-c2232bd8ecd0
+    #         HEROKU_APP_NAME: circleci-python-flask
 
 
 
@@ -137,23 +135,26 @@ jobs:
     #       command: echo ${FLASK_CONFIG}
     #       environment:
     #         FLASK_CONFIG: staging
-#   deploy:
-#     docker:
-#       - image: circleci/buildpack-deps:xenial
-#     steps:
-#       - checkout
-#       - run:
-#           name: installing git
-#           command:  apt-get install git
-#       - run:
-#           name: Deploy Master to Heroku
-#           command: |
-#             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-#           environment:
-#             HEROKU_API_KEY: a712e197-ad8a-46e2-8fb4-c2232bd8ecd0
-#             HEROKU_APP_NAME: circleci-python-flask
-
+    
 #dont use#
+
+  deploy:
+    docker:
+      - image: circleci/buildpack-deps:xenial
+    steps:
+      - checkout
+      - run:
+          name: installing git
+          command:  apt-get install git
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          environment:
+            HEROKU_API_KEY: a712e197-ad8a-46e2-8fb4-c2232bd8ecd0
+            HEROKU_APP_NAME: circleci-python-flask
+
+
 #  python flask tutorial#
 
 
