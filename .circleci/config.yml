@@ -108,7 +108,7 @@ jobs:
           path: test-reports/
       - run:
           name: installing git
-          command:  apt-get install git
+          command:  which git
       - run:
           name: Deploy Master to Heroku
           command: |
