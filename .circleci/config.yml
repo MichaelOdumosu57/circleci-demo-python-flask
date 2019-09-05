@@ -114,8 +114,8 @@ jobs:
     #       environment:
     #         FLASK_CONFIG: staging
   deploy:
-    # docker:
-    #   - image: circleci/python:3.6.2-stretch-browsers
+    docker:
+      - image: circleci/buildpack-deps:xenial
     steps:
       - checkout
       - run:
